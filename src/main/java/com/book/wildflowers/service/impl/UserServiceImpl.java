@@ -25,12 +25,13 @@ public class UserServiceImpl implements UserService {
             return false;
     }
 
-    public List<User> queryUser() {
-        // TODO Auto-generated method stub
-        return userDao.queryUser();
-    }
+
     public User queryUserByname(String userName) {
         // TODO Auto-generated method stub
         return userDao.queryUserByname(userName);
+    }
+    public List<User> queryUser() {
+        // TODO Auto-generated method stub
+        return userDao.queryUser();
     }
 }

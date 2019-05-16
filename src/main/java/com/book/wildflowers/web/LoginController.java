@@ -3,6 +3,7 @@ package com.book.wildflowers.web;
 import com.book.wildflowers.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,6 +15,11 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping("/user")
+    private String user(Model model, String name) {
+        model.addAttribute("name", name);
+        return "user";
+    }
 @ResponseBody
 @RequestMapping("/login")
     public int login(String name, String password, String type,HttpSession session) {

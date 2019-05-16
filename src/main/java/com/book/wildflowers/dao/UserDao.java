@@ -5,7 +5,7 @@ import com.book.wildflowers.entity.User;
 import java.util.List;
 
 public interface UserDao {
-    public List<User> queryUser();
+     List<User> queryUser();
 //    用户登录
-    public User queryUserByname(String userName);
+     User queryUserByname(String userName);
 }
