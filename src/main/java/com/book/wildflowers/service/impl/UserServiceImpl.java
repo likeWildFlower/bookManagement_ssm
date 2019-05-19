@@ -24,12 +24,26 @@ public class UserServiceImpl implements UserService {
         }else
             return false;
     }
-
+public boolean addUser(User u){
+        User user=userDao.queryUserByname(u.getUserName());
+        if (user==null){
+            userDao.addUser(u);
+            return true;
+        }else {
+            return false;
+        }
+}
 
     public User queryUserByname(String userName) {
         // TODO Auto-generated method stub
         return userDao.queryUserByname(userName);
     }
+
+    @Override
+    public int addUserOverdue(String userName) {
+        return userDao.addUserOverdue(userName);
+    }
+
     public List<User> queryUser() {
         // TODO Auto-generated method stub
         return userDao.queryUser();

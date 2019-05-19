@@ -9,4 +9,6 @@ public interface UserService {
 //    用户登录
     boolean loginUser(String userName,String userPassword);
     User queryUserByname(String userName);
+//    添加用户
+    int addUserOverdue(String userName);
 }
