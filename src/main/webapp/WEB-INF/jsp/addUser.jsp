@@ -11,7 +11,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>图书馆管理系统</title>
+<title>图书资源管理系统</title>
 <link href="<%=basePath %>resources/css/style.css" rel="stylesheet">
 <script type="text/javascript" src="<%=basePath %>resources/js/jquery-1.12.3.min.js"></script>
 <link href="<%=basePath %>resources/css/bootstrap.css" rel="stylesheet"/>
@@ -122,12 +122,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
   </tr>
       <tr>
         <td width="124" height="23">&nbsp;</td>
-        <td valign="bottom" align="center">(c) Copyright 2018 肖伟佳. All Rights Reserved. </td>
+        <td valign="bottom" align="center">(c) Copyright 2019 likeWildflowers. All Rights Reserved. </td>
         <td width="141">&nbsp;</td>
       </tr>
       <tr>
         <td height="23">&nbsp;</td>
-        <td align="center">本系统为武汉轻工大学图书管理系统，仅供毕业设计</td>
+        <td align="center">图书资源管理系统</td>
         <td>&nbsp;</td>
       </tr>
       <tr>

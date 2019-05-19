@@ -47,12 +47,12 @@
         </tr>
         <tr>
             <td width="124" height="23">&nbsp;</td>
-            <td valign="bottom" align="center">(c) Copyright 2019 刘俊杰. All Rights Reserved. </td>
+            <td valign="bottom" align="center">(c) Copyright 2019 likeWildflowers. All Rights Reserved. </td>
             <td width="141">&nbsp;</td>
         </tr>
         <tr>
             <td height="23">&nbsp;</td>
-            <td align="center">LikeWildflowers</td>
+            <td align="center">图书资源管理系统</td>
             <td>&nbsp;</td>
         </tr>
         <tr>
