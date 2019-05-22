@@ -3,10 +3,14 @@ package com.book.wildflowers.service.impl;
 import com.book.wildflowers.dao.BookDao;
 import com.book.wildflowers.entity.Book;
 import com.book.wildflowers.service.BookService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -43,5 +47,57 @@ public class BookServiceImpl implements BookService {
     @Override
     public int reduceNumber(long bookId) {
         return bookDao.reduceNumber(bookId);
+    }
+
+    @Override
+    public List<Book> getById(String bookId) {
+//        定义输入为0到9的数字
+        Pattern pattern = Pattern.compile("[0-9]*");
+        if(bookId==""){
+            return  new ArrayList<Book>();
+        }else{
+            Matcher isNum = pattern.matcher(bookId);
+            if(!isNum.matches()){
+                return new ArrayList<Book>();
+            }else{
+                return bookDao.queryById(Long.parseLong(bookId));
+            }
+        }
+    }
+
+    @Override
+    public List<Book> getByName(String name) {
+        if(name==""){
+            return  new ArrayList<Book>();
+        }else{
+            return bookDao.queryByName(name);
+        }
+    }
+
+    @Override
+    public List<Book> getByType(String type) {
+        if(type==""){
+            return  new ArrayList<Book>();
+        }else{
+            return bookDao.queryByType(type);
+        }
+    }
+
+    @Override
+    public List<Book> getByPress(String press) {
+        if(press==""){
+            return  new ArrayList<Book>();
+        }else{
+            return bookDao.queryByPress(press);
+        }
+    }
+
+    @Override
+    public List<Book> getByAuthor(String author) {
+        if(author==""){
+            return  new ArrayList<Book>();
+        }else{
+            return bookDao.queryByAuthor(author);
+        }
     }
 }

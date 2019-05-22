@@ -33,5 +33,32 @@ public interface BookDao {
      */
     public int reduceNumber(long bookId);
 
+    /**
+     * 通过id查阅图书
+     */
+
+    List<Book> queryById(long bookId);
+    /**
+     * 通过书名查阅图书
+     */
+    List<Book> queryByName(String bookName);
+    /**
+     * 通过type查阅图书
+     */
+
+    List<Book> queryByType(String type);
+
+    /**
+     * 通过press查阅图书
+     */
+
+    List<Book> queryByPress(String press);
+
+    /**
+     * 通过author查阅图书
+     */
+
+    List<Book> queryByAuthor(String author);
+
 
 }
