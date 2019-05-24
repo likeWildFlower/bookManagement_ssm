@@ -1,7 +1,9 @@
 package com.book.wildflowers.web;
 
 import com.book.wildflowers.entity.Book;
+import com.book.wildflowers.entity.User;
 import com.book.wildflowers.service.BookService;
+import com.book.wildflowers.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,7 @@ import java.util.List;
 public class AdminController {
     @Autowired
     private BookService bookService;
+    private UserService userService;
 
     /**
      * 显示首页
@@ -29,6 +32,35 @@ public class AdminController {
         String admins=(String)session.getAttribute("loginAdmin");
         model.addAttribute("name",admins);
         return "admin";
+    }
+    /**
+     * 跳转添加用户界面
+     * @param session
+     * @param model
+     * @return
+     */
+    @RequestMapping("/addUsers")
+    public String addUsers(HttpSession session,Model model) {
+        String aa=(String)session.getAttribute("loginAdmin");
+        model.addAttribute("name", aa);
+        return "addUser";
+
+    }
+    /**
+     * 添加用户
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/addUser")
+    public int addUser(HttpSession session,Model model,String name,String passage,String day,String phone) {
+        String aa=(String)session.getAttribute("loginAdmin");
+        model.addAttribute("name", aa);
+        User user = new User(name, passage, phone,Integer.parseInt(day),0);
+        if (userService.addUser(user)) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -62,7 +94,36 @@ public class AdminController {
         }
         return "addBooks";
     }
-
+    /**
+     * 显示所有用户界面
+     * @param name
+     * @param model
+     * @return
+     */
+    @RequestMapping("/manageUsers")
+    public String manageUsers(String name,HttpSession session,Model model){
+        String aa=(String)session.getAttribute("loginAdmin");
+        model.addAttribute("name", aa);
+        List<User> uList=userService.queryUser();
+        model.addAttribute("uList", uList);
+        return "manageUsers";
+    }
+    /**
+     * 修改用户借阅时间
+     * @param name
+     * @param day
+     * @param model
+     * @return
+     */
+    @RequestMapping("updateDay")
+    public String updateDay(String name,int day,Model model,HttpSession session){
+        String aa=(String)session.getAttribute("loginAdmin");
+        model.addAttribute("name", aa);
+        userService.updateUserDay(day, name);
+        List<User> uList=userService.queryUser();
+        model.addAttribute("uList", uList);
+        return "manageUsers";
+    }
     /**
      * 修改图书界面
      * @param model
