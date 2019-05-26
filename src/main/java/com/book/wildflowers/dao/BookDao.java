@@ -21,12 +21,12 @@ public interface BookDao {
     /**
      * 查询是否有重复的图书
      */
-    Book queryBook(@Param("bookName")String bookName, @Param("type")String type, @Param("press")String press, @Param("author")String author);
+    Book queryBook(@Param("bookName") String bookName, @Param("type") String type, @Param("press") String press, @Param("author") String author);
 
     /**
      * 增加藏书的数量
      */
-    public int addNumber(@Param("bookId")long bookId,@Param("number")int number);
+    public int addNumber(@Param("bookId") long bookId, @Param("number") int number);
 
     /**
      * 减少藏书的数量
